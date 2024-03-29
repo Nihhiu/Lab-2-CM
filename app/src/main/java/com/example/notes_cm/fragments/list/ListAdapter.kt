@@ -28,6 +28,8 @@ class ListAdapter: RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem = notesList[position]
         holder.itemView.findViewById<TextView>(R.id.note_txt).text = currentItem.note
+        holder.itemView.findViewById<TextView>(R.id.desc_txt).text = currentItem.description
+        holder.itemView.findViewById<TextView>(R.id.date_txt).text = currentItem.date
 
         if(position%2 == 0)
             holder.itemView.findViewById<ConstraintLayout>(R.id.rowLayout).setBackgroundColor(Color.parseColor("#d6d4e0"))

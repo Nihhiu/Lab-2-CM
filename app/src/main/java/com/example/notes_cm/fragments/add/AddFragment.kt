@@ -13,6 +13,10 @@ import androidx.navigation.fragment.findNavController
 import com.example.notes_cm.R
 import com.example.notes_cm.data.entities.Note
 import com.example.notes_cm.data.vm.NoteViewModel
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
+
 
 class AddFragment : Fragment() {
     private lateinit var mNoteViewModel: NoteViewModel
@@ -40,12 +44,18 @@ class AddFragment : Fragment() {
 
     private fun addNote() {
         val noteText = view?.findViewById<EditText>(R.id.addNote)?.text.toString()
+        val descText = view?.findViewById<EditText>(R.id.addDesc)?.text.toString()
 
-        if(noteText.isEmpty()) {
-            Toast.makeText(view?.context, "Não pode uma nota vazia!", Toast.LENGTH_LONG).show()
+        if(noteText.isEmpty() || descText.isEmpty()) {
+            Toast.makeText(view?.context, "Não pode haver campos vazios!", Toast.LENGTH_LONG).show()
         }
         else {
-            val note = Note(0, noteText)
+            // Obtém a data atual
+            val calendar = Calendar.getInstance()
+            val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+            val dateText = dateFormat.format(calendar.time)
+
+            val note = Note(0, noteText, descText, dateText)
 
             mNoteViewModel.addNote(note)
 
@@ -53,4 +63,5 @@ class AddFragment : Fragment() {
             findNavController().navigate(R.id.action_addFragment_to_listFragment)
         }
     }
+
 }

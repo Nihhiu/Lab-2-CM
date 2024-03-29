@@ -17,6 +17,9 @@ import androidx.navigation.fragment.navArgs
 import com.example.notes_cm.R
 import com.example.notes_cm.data.entities.Note
 import com.example.notes_cm.data.vm.NoteViewModel
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 class UpdateFragment : Fragment() {
     private  val args by navArgs<UpdateFragmentArgs>()
@@ -52,12 +55,18 @@ class UpdateFragment : Fragment() {
 
     private  fun updateNote(){
         val noteText = view?.findViewById<EditText>(R.id.updateNote)?.text.toString()
+        val descText = view?.findViewById<EditText>(R.id.updateDesc)?.text.toString()
 
-        if(noteText.isEmpty()) {
-            makeText(context , "Não pode uma nota vazia!", Toast.LENGTH_LONG).show()
+        // Obtém a data atual
+        val calendar = Calendar.getInstance()
+        val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+        val dateText = dateFormat.format(calendar.time)
+
+        if(noteText.isEmpty() || descText.isEmpty()) {
+            Toast.makeText(context , "Não pode haver campos vazios!", Toast.LENGTH_LONG).show()
         }
         else {
-            val note = Note(args.currentNote.id, noteText)
+            val note = Note(args.currentNote.id, noteText, descText, dateText)
 
             mNoteViewModel.updateNote(note)
 

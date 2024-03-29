@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="5sp"
-    tools:context=".fragments.update.UpdateFragment">
+    android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/ll_main_layout_update_note"
+        android:id="@+id/ll_main_layout_add_report"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="left"
@@ -22,29 +18,23 @@
             android:textSize="25dp" />
 
         <EditText
-            android:id="@+id/updateNote"
+            android:id="@+id/addNote"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <EditText
-            android:id="@+id/updateDesc"
+            android:id="@+id/addDesc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <Button
-            android:id="@+id/update"
+            android:id="@+id/save"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Save" />
 
         <Button
-            android:id="@+id/delete"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Delete" />
-
-        <Button
-            android:id="@+id/backToListFromUpdate"
+            android:id="@+id/backToList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Back" />
